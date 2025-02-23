@@ -705,7 +705,7 @@ function ProcessRequest(reqIndex, request)
     if item_info.type == 'item' then
         for merge_item, merge_count_req in pairs(dispatcher.Requests_by_Stop[toID]) do
             local merge_item_info = tools.parseItemIdentifier(merge_item)
-            if merge_item_info then
+            if merge_item_info and merge_item_info.type == 'item' then
                 assert(prototypes.item[merge_item_info.name], 'item prototype undefined!', merge_item_info)
                 local merge_localname = prototypes.item[merge_item_info.name].localised_name
                 -- get current provider for requested item
